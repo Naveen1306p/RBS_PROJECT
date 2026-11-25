@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}A warmer welcome{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow"><span class="eyebrow-dot"></span> A fresh start begins here</p>
+    <h1>Make yourself<br><span>at home.</span></h1>
+    <p class="hero-description">A thoughtful little corner of the internet, made for you. Create your space and pick up right where you left off.</p>
+    <div class="hero-actions">
+      <a class="button button-primary" href="{{ url_for('signup') }}">Create your account <span aria-hidden="true">→</span></a>
+      <a class="text-link" href="{{ url_for('login') }}">I already have an account</a>
+    </div>
+    <div class="trust-note"><span class="avatar-stack" aria-hidden="true"><i>J</i><i>A</i><i>M</i></span><span>A lovely place to begin again.</span></div>
+  </div>
+  <div class="hero-art" aria-label="Illustration of a welcoming home">
+    <div class="sun"></div>
+    <div class="art-label"><span class="sparkle">✳</span><span>your place<br>your pace</span></div>
+    <div class="house">
+      <div class="roof"></div><div class="house-body">
+        <div class="window window-left"><span></span><i></i></div>
+        <div class="door"><span class="door-knob"></span></div>
+        <div class="window window-right"><span></span><i></i></div>
+      </div>
+      <div class="step"></div>
+    </div>
+    <div class="plant plant-left"><i></i><i></i><i></i><span></span></div>
+    <div class="plant plant-right"><i></i><i></i><i></i><span></span></div>
+    <div class="art-ground"></div>
+    <span class="art-caption">a good thing starts with hello</span>
+  </div>
+</section>
+<section class="feature-row">
+  <article><span class="feature-icon">✦</span><div><h2>Simple by design</h2><p>Everything you need, nothing you don't.</p></div></article>
+  <article><span class="feature-icon feature-icon-green">♡</span><div><h2>Made for you</h2><p>Your account, your personal space.</p></div></article>
+  <article><span class="feature-icon feature-icon-yellow">↗</span><div><h2>Easy to come back</h2><p>Pick up right where you left off.</p></div></article>
+</section>
+{% endblock %}

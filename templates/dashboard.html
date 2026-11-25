@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Your space{% endblock %}
+{% block content %}
+<section class="dashboard">
+  <p class="eyebrow"><span class="eyebrow-dot"></span> YOUR PERSONAL SPACE</p>
+  <h1>Well, hello again.</h1>
+  <p class="hero-description">You're signed in as <strong>{{ current_user.email }}</strong>. Make yourself comfortable.</p>
+  <a class="button button-primary" href="{{ url_for('home') }}">Back to home <span aria-hidden="true">→</span></a>
+</section>
+{% endblock %}

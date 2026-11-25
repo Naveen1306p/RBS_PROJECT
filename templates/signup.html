@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% from "_form_field.html" import render_field %}
+{% block title %}Create your account{% endblock %}
+{% block content %}
+<section class="auth-layout">
+  <div class="auth-aside aside-peach">
+    <span class="aside-sparkle">✳</span>
+    <div><p class="eyebrow">YOUR OWN LITTLE CORNER</p><h1>Good things<br>start with<br><em>hello.</em></h1><p>Sign up in a moment. Your space will be waiting.</p></div>
+    <span class="aside-note">made with a little extra care <span>♡</span></span>
+  </div>
+  <div class="auth-panel">
+    <div class="form-wrap">
+      <p class="eyebrow">LET'S GET YOU SET UP</p><h2>Create your account</h2><p class="form-subtitle">A few details and you're right at home.</p>
+      <form method="post" novalidate>
+        {{ form.hidden_tag() }}
+        {% for error in form.errors.get('csrf_token', []) %}<p class="form-error">{{ error }}</p>{% endfor %}
+        {{ render_field(form.email, autocomplete="email", placeholder="you@example.com") }}
+        {{ render_field(form.password, autocomplete="new-password", placeholder="At least 10 characters") }}
+        {{ render_field(form.confirm_password, autocomplete="new-password", placeholder="Type it again") }}
+        <button class="button button-primary button-full" type="submit">Create account <span aria-hidden="true">→</span></button>
+      </form>
+      <p class="form-bottom">Already have an account? <a href="{{ url_for('login') }}">Sign in</a></p>
+      <p class="secure-note"><span>◎</span> Your password is securely protected.</p>
+    </div>
+  </div>
+</section>
+{% endblock %}

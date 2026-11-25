@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7fb">
+  <title>{% block title %}Welcome{% endblock %} · Welcome</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="{{ url_for('home') }}"><span class="brand-mark">w</span><span>welcomely</span></a>
+    <nav aria-label="Main navigation">
+      {% if current_user.is_authenticated %}
+        <a class="nav-link" href="{{ url_for('dashboard') }}">Your space</a>
+        <form class="nav-form" method="post" action="{{ url_for('logout') }}">
+          {{ logout_form.hidden_tag() }}
+          <button class="nav-link nav-button" type="submit">Sign out</button>
+        </form>
+      {% else %}
+        <a class="nav-link" href="{{ url_for('login') }}">Sign in</a>
+        <a class="nav-cta" href="{{ url_for('signup') }}">Get started <span aria-hidden="true">↗</span></a>
+      {% endif %}
+    </nav>
+  </header>
+  <main>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <section class="flash-stack" aria-live="polite">
+          {% for category, message in messages %}
+            <p class="flash flash-{{ category }}">{{ message }}</p>
+          {% endfor %}
+        </section>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="footer"><span>© 2026 Welcomely</span><span>A little space to feel at home.</span></footer>
+</body>
+</html>
