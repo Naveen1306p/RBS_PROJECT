@@ -153,9 +153,14 @@ def _send_reset_email(email, reset_url):
 
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
+    default_database = (
+        "/tmp/accounts.sqlite3"
+        if os.environ.get("VERCEL")
+        else str(Path(app.instance_path) / "accounts.sqlite3")
+    )
     app.config.from_mapping(
         SECRET_KEY=os.environ.get("SECRET_KEY", "local-development-key-change-me"),
-        DATABASE=os.environ.get("DATABASE_PATH", str(Path(app.instance_path) / "accounts.sqlite3")),
+        DATABASE=os.environ.get("DATABASE_PATH", default_database),
         ENVIRONMENT=os.environ.get("APP_ENV", "development"),
         MAIL_SERVER=os.environ.get("MAIL_SERVER"),
         MAIL_PORT=int(os.environ.get("MAIL_PORT", "587")),
@@ -175,7 +180,6 @@ def create_app(test_config=None):
         if not app.config["MAIL_SERVER"]:
             raise RuntimeError("Configure MAIL_SERVER before running in production.")
 
-    Path(app.instance_path).mkdir(parents=True, exist_ok=True)
     _init_db(app)
     login_manager.init_app(app)
 

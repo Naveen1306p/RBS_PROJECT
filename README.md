@@ -38,6 +38,10 @@ $env:MAIL_FROM = "noreply@example.com"
 
 Set `APP_ENV=production`, a unique high-entropy `SECRET_KEY`, and working SMTP settings. Deploy behind HTTPS and a production WSGI server (for example Waitress or Gunicorn where supported); do not use Flask's development server in production. Set `DATABASE_PATH` to a persistent writable path if needed. Configure rate limiting at the reverse proxy or hosting layer before exposing authentication endpoints publicly.
 
+## Vercel
+
+Deploy the repository root with `vercel.json` and configure `APP_ENV=production`, a unique `SECRET_KEY`, and the `MAIL_SERVER`/`MAIL_FROM` settings (plus SMTP credentials if required) in the Vercel project environment variables. Vercel's local SQLite file is stored in `/tmp` and is ephemeral; use a persistent database for production accounts.
+
 ## Tests
 
 ```powershell
