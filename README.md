@@ -1,4 +1,4 @@
-# Welcomely
+# rbsteam
 
 A responsive welcome page with account signup, sign-in, and secure password reset, built with Flask and SQLite.
 

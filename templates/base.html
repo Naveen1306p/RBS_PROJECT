@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f7fb">
-  <title>{% block title %}Welcome{% endblock %} · Welcome</title>
+  <title>{% block title %}Welcome{% endblock %} · rbsteam</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="{{ url_for('home') }}"><span class="brand-mark">w</span><span>welcomely</span></a>
+    <a class="brand" href="{{ url_for('home') }}"><span class="brand-mark">r</span><span>rbsteam</span></a>
     <nav aria-label="Main navigation">
       {% if current_user.is_authenticated %}
         <a class="nav-link" href="{{ url_for('dashboard') }}">Your space</a>
@@ -38,6 +38,6 @@
     {% endwith %}
     {% block content %}{% endblock %}
   </main>
-  <footer class="footer"><span>© 2026 Welcomely</span><span>A little space to feel at home.</span></footer>
+  <footer class="footer"><span>© 2026 rbsteam</span><span>A little space to feel at home.</span></footer>
 </body>
 </html>
